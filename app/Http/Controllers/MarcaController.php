@@ -68,7 +68,7 @@ class MarcaController extends Controller
             return response()->json('No se pudo realizar correctamnet la opracion',404 );
         }
         $marcas->delete();
-        return response()->jsonContent();
+        return response()->noContent();
     }
     
 }

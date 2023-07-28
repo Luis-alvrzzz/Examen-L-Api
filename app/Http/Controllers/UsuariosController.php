@@ -48,7 +48,7 @@ class UsuariosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, usuarios $usuarios)
+    public function update(Request $request, usuarios $usuario)
     {
         $request->validate([
             'nombre' => 'required',
@@ -58,13 +58,13 @@ class UsuariosController extends Controller
         ]);
 
         
-        $usuarios->nombre = $request->nombre;
-        $usuarios->apellido = $request->apellido;
-        $usuarios->usuario = $request->usuario;
-        $usuarios->contrasena = $request->contrasena;
-        $usuarios->update();
+        $usuario->nombre = $request->nombre;
+        $usuario->apellido = $request->apellido;
+        $usuario->usuario = $request->usuario;
+        $usuario->contrasena = $request->contrasena;
+        $usuario->update();
 
-        return $usuarios;
+        return $usuario;
     }
 
     /**
@@ -77,6 +77,6 @@ class UsuariosController extends Controller
             return response()->json('No se pudo realizar correctamnet la opracion',404 );
         }
         $usuario->delete();
-        return response()->jsonContent();
+        return response()->noContent();
     }
 }

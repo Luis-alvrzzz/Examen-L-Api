@@ -89,6 +89,6 @@ class VapesController extends Controller
             return response()->json('No se pudo realizar correctamnet la opracion',404 );
         }
         $usuarios->delete();
-        return response()->jsonContent();
+        return response()->noContent();
     }
 }

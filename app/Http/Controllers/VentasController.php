@@ -72,6 +72,6 @@ class VentasController extends Controller
             return response()->json('No se pudo realizar correctamnet la opracion',404 );
         }
         $ventas->delete();
-        return response()->jsonContent();
+        return response()->noContent();
     }
 }
