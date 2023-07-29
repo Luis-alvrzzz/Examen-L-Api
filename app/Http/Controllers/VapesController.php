@@ -23,10 +23,6 @@ class VapesController extends Controller
     {
         $request->validate([
             'nombre' => 'required',
-            'marca'=> 'required',
-            'sabor'=> 'required',
-            'precio'=> 'required',
-            'existencias'=> 'required',
         ]);
 
         $vape = new vapes;
