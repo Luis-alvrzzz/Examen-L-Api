@@ -83,28 +83,4 @@ class UsuariosController extends Controller
     }
 
 
-    public function login(Request $request)
-    {
-        $response = ["status" => 0, "msg" => ""];
-        $data = $request->validate([
-            'usuario' => 'required|string',
-            'contrasena' => 'required|string',
-        ]);
-
-        $user = Usuarios::where('usuario', $data['usuario'])->first();
-
-        if ($user) {
-            if (Hash::check($data['contrasena'], $user->contrasena)) {
-                $response["status"] = 1;
-                $response["msg"] = "Inicio de sesión exitoso.";
-                $response["user"] = $user;
-            } else {
-                $response["msg"] = "Credenciales incorrectas.";
-            }
-        } else {
-            $response["msg"] = "Usuario no encontrado.";
-        }
-
-        return response()->json($response);
-    }
 }
