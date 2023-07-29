@@ -14,14 +14,12 @@ return new class extends Migration
         Schema::create('vapes', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->unsignedBigInteger('marca_id');
+            $table->string('marca');
             $table->string('sabor');
             $table->integer('precio');
             $table->integer('existencias');
             $table->boolean('desechable');
-            $table->string('img');
             $table->timestamps();
-            $table->foreign('marca_id')->references('id')->on('marcas');
         });
     }
 
