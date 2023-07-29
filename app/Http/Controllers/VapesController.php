@@ -32,7 +32,6 @@ class VapesController extends Controller
         $vape->precio = $request->precio;
         $vape->existencias = $request->existencias;
         $vape->desechable = $request->desechable;
-        $vape->img = $request->img;
         $vape->save();
 
         return $vape;
@@ -53,10 +52,6 @@ class VapesController extends Controller
     {
         $request->validate([
             'nombre' => 'required',
-            'marca'=> 'required',
-            'sabor'=> 'required',
-            'precio'=> 'required',
-            'existencias'=> 'required',
         ]);
 
         $vape->nombre = $request->nombre;
@@ -65,7 +60,6 @@ class VapesController extends Controller
         $vape->precio = $request->precio;
         $vape->existencias = $request->existencias;
         $vape->desechable = $request->desechable;
-        $vape->img = $request->img;
         $vape->update();
 
         return $vape;
