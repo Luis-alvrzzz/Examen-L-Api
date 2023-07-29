@@ -95,10 +95,8 @@ class UsuariosController extends Controller
 
         if ($user) {
             if (Hash::check($data['contrasena'], $user->contrasena)) {
-                $token = $user->createToken("example")->plainTextToken;
                 $response["status"] = 1;
                 $response["msg"] = "Inicio de sesión exitoso.";
-                $response["token"] = $token;
                 $response["user"] = $user;
             } else {
                 $response["msg"] = "Credenciales incorrectas.";
