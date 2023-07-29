@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\usuarios;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Hash;
+
 class UsuariosController extends Controller
 {
     /**
@@ -78,5 +80,33 @@ class UsuariosController extends Controller
         }
         $usuario->delete();
         return response()->noContent();
+    }
+
+
+    public function login(Request $request)
+    {
+        $response = ["status" => 0, "msg" => ""];
+        $data = $request->validate([
+            'usuario' => 'required|string',
+            'contrasena' => 'required|string',
+        ]);
+
+        $user = Usuarios::where('usuario', $data['usuario'])->first();
+
+        if ($user) {
+            if (Hash::check($data['contrasena'], $user->contrasena)) {
+                $token = $user->createToken("example")->plainTextToken;
+                $response["status"] = 1;
+                $response["msg"] = "Inicio de sesión exitoso.";
+                $response["token"] = $token;
+                $response["user"] = $user;
+            } else {
+                $response["msg"] = "Credenciales incorrectas.";
+            }
+        } else {
+            $response["msg"] = "Usuario no encontrado.";
+        }
+
+        return response()->json($response);
     }
 }

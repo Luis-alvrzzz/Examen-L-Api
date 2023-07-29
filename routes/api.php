@@ -21,7 +21,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::post('/login', [Controller::class, 'login']);
+Route::post('/login', [UserController::class, 'login']);
+
 
 Route::apiResource('marcas', MarcaController::class);
 Route::apiResource('vapes', VapesController::class);
