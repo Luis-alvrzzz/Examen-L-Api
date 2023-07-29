@@ -63,7 +63,6 @@ class VapesController extends Controller
             'sabor'=> 'required',
             'precio'=> 'required',
             'existencias'=> 'required',
-            'desechable'=> 'required'
         ]);
 
         $vape->nombre = $request->nombre;
